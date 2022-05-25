@@ -1,0 +1,196 @@
+﻿@{
+    Layout = null;
+}
+
+@Html.AntiForgeryToken()
+
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.4
+Version: 3.3.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>SigortaCini | Yönetim Paneli</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="~/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="~/metronic/assets/admin/pages/css/login.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="~/metronic/assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/global/css/plugins-md.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="~/metronic/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="~/favicon.ico" />
+  
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-md login">
+    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    <div class="menu-toggler sidebar-toggler">
+    </div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGO -->
+    @*<div class="logo">
+            <a href="index.html">
+                <img src="~/metronic/assets/admin/img/logo-big.png" alt="" />
+            </a>
+        </div>*@
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        <img class="logom" src="~/metronic/assets/admin/img/logo.png" />
+        <h3 class="form-title orange ">Yönetim Paneli</h3>
+        <div class="alert alert-danger display-hide" id="alertDiv">
+            <button class="close" data-close="alert"></button>
+            <span id="alertMessage">
+                Kullanıcı adı ve şifre giriniz.
+            </span>
+        </div>
+        <div class="form-actions divUserNamePanel">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Kullanıcı Adı/Email Adresi</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Kullanıcı Adı/Email Adresi" name="username" id="LoginUserName" autofocus />
+
+            <div class="RoleIsActiveDiv">
+                <label class="rememberme check">
+                    <input type="checkbox" class="custom-control-input" name="remember" id="checkAggrement">
+                    Sigorta Cini <a class="mya" data-v-de3339fa="" href="#" data-toggle="modal" data-target="#userTerms" style="font-weight: bold; ">Kullanıcı ve Gizlilik Sözleşmelerini</a> kabul ediyorum.
+                </label>
+            </div>
+
+            @*<div class=" col-md-12 form-group checkbox checkbox-success padding-left-25 RoleIsActiveDiv">
+                <input id="checkAggrement" name="remember" type="checkbox">
+                <label for="checkAggrement">
+                    Sigorta Cini <a class="mya" data-v-de3339fa="" href="#" data-toggle="modal" data-target="#userTerms" style="font-weight: bold; ">Kullanıcı ve Gizlilik Sözleşmelerini</a> kabul ediyorum.
+                </label>
+            </div>*@
+
+
+            <button type="button" class="btn pink-color btn-block" id="btnLogin">GİRİŞ YAP</button>
+        </div>
+        <div class="form-group divOtpPasswordPanel hide">
+            <label class="rememberme check">
+
+            </label>
+            <label class="control-label visible-ie8 visible-ie9">Telefonunuza gelen şifreyi 2 dk. içinde giriniz.</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Lütfen cep telefonunuza gelen şifreyi girin." name="LoginOtpPassword" id="LoginOtpPassword" />
+            <button type="button" class="btn btn-success uppercase text-center" id="btnLoginOtpPassword" style="margin-top:15px">Giriş Yap</button>
+        </div>
+        <div class="form-group divUserPasswordPanel hide">
+            <label class="control-label visible-ie8 visible-ie9">Şifre</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Şifre" name="password" id="LoginPassword" autofocus />
+            <button type="button" class="btn pink-color btn-block" id="btnLoginPassword" style="margin-top:15px; border-radius: 8px;">GİRİŞ YAP</button>
+        </div>
+
+        <div class="modal fade" id="userTerms" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">
+                            Hak ve Yükümlülükler
+                        </h2>
+                        <button style="    margin-top: -47px !important;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Son güncelleme 28 Aralık 2018.</p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br />
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_accept">Kabul Ediyorum</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden">
+            <input type="hidden" id="hiddenUserName" />
+            <input type="hidden" id="hiddenUserId" />
+            <input type="hidden" id="btnLoginStatus" />
+        </div>
+    </div>
+
+    <div class="content-loader">
+        <img src="~/metronic/assets/admin/img/myspinner.gif" alt="" class="loading-img" />
+        <p class="loading-text">
+            Yükleniyor @*<span>.</span><span>.</span><span>.</span>*@
+        </p>
+    </div>
+    @*<div class="copyright">
+            2019 © Sigortacini. Yönetim Paneli.
+        </div>*@
+    <!-- END LOGIN -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+    <script src="~/metronic/assets/global/plugins/respond.min.js"></script>
+    <script src="~/metronic/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/metronic/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="~/metronic/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="~/metronic/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+   
+    <script src="~/login/login.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            Demo.init();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

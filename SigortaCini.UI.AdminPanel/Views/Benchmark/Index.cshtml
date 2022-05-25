@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewData["Title"] = "Benchmark";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Benchmark
+    </div>
+
+</div>
+
+<br />
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active border-1-black"><a id="product_content" data-toggle="pill" href="#product">Ürün Benchmark</a></li>
+        <li class="border-1-black"><a id="company_content" data-toggle="pill" href="#company">Şirket Benchmark</a></li>
+    </ul>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div id="product" class="tab-pane fade in active">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                <label>Ürün</label>
+                                <select class="form-control" data-placeholder="Seçiniz..." multiple id="product_name">
+                                </select>
+                                <br />
+                                <input type="checkbox" id="selectAllProducts">Hepsini Seç
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Ortam</label>
+                                <select class="form-control" id="tenantProducts">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_product" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_product" class="form-control">
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-12 form-group margin-top-25">
+                                <button id="btnListProduct" class="btn btn-success border-8-radius">Listele</button>
+                            </div>
+               
+                        </div>
+                    </div>
+                    <div id="chart_div_product" class="hide"></div>
+                    <div id="product_divider" class="col-md-12 p-d-0 hr hide"></div>
+                    <div id="product_table" class="hide">
+                        <table class="table table-striped table-bordered table-hover" id="productTable">
+                            <thead>
+                                <tr class="table_thead_back">
+                                    <th class="no-cursor">
+                                        Kullanıcı Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Soyad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ortam Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ürün Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Task Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başarısız Teklif Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başarılı Teklif Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Poliçe Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Poliçeleştirme Oranı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başlangıç Tarihi
+                                    </th>
+                                    <th class="no-cursor">
+                                        Bitiş Tarihi
+                                    </th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+                <div id="company" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                <label>Şirket</label>
+                                <select class="form-control" data-placeholder="Seçiniz..." multiple id="company_name">
+                                </select>
+                                <br />
+                                <input type="checkbox" id="selectAllCompanies">Hepsini Seç
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Ürün</label>
+                                <select class="form-control" id="productForCompanies">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Ortam</label>
+                                <select class="form-control" id="tenantCompanies">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_companies" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_companies" class="form-control">
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-12 form-group margin-top-25">
+                                <button id="btnListCompany" class="btn btn-success border-8-radius">Listele</button>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+                    <div id="chart_div_company" class="hide"></div>
+                    <div id="company_divider" class="col-md-12 p-d-0 hr hide"></div>
+                    <div id="company_table" class="hide">
+                        <table class="table table-striped table-bordered table-hover" id="companyTable">
+                            <thead>
+                                <tr class="table_thead_back">
+                                    <th class="no-cursor">
+                                        Kullanıcı Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Soyad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ortam Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Şirket Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ürün Ad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Task Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başarısız Teklif Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başarılı Teklif Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Poliçe Sayısı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Poliçeleştirme Oranı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Başlangıç Tarihi
+                                    </th>
+                                    <th class="no-cursor">
+                                        Bitiş Tarihi
+                                    </th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/metronic/assets/global/plugins/googleChart.js"></script>
+    <script type="text/javascript" src="~/js/benchmark/benchmark.js"></script>
+}

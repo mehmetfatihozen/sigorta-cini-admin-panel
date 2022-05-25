@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Teklif Sayısı Raporu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Teklif Sayısı Raporu
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active border-1-black"><a data-toggle="pill" href="#offerReportByProduct" id="offerReportByProductTab">Ürün Bazlı Teklif Sayısı</a></li>
+        <li class="border-1-black"><a data-toggle="pill" href="#offerReportByCompany" id="offerReportByCompanyTab">Şirket Bazlı Teklif Sayısı</a></li>
+    </ul>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div id="offerReportByProduct" class="tab-pane fade in active">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label class="row col-xs-12">Oluşturulma Tarihi&nbsp;<i class="fa fa-calendar"></i></label>
+                            <input id="createdDateRangeByProduct" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label>Kaynak</label>
+                            <select class="form-control" data-placeholder="Seçiniz..." multiple id="tenantsByProduct"></select>
+                            <br />
+                            <input type="checkbox" id="selectAllTenantsByProduct">Hepsini Seç
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group margin-top-25 text-center">
+                            <button id="btnListByProduct" class="btn btn-success border-8-radius">Listele</button>
+                            <button id="btnClearByProduct" class="btn btn-warning border-8-radius">Temizle</button>
+                        </div>
+                    </div>
+                    <button id="btnExcelFileDownloadByProduct">Excel İndir</button>
+                </div>
+                <div id="offerReportByCompany" style="width:100%;height:auto" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label class="row col-xs-12">Oluşturulma Tarihi&nbsp;<i class="fa fa-calendar"></i></label>
+                            <input id="createdDateRangeByCompany" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label>Kaynak</label>
+                            <select class="form-control" data-placeholder="Seçiniz..." multiple id="tenantsByCompany"></select>
+                            <br />
+                            <input type="checkbox" id="selectAllTenantsByCompany">Hepsini Seç
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label>Ürün</label>
+                            <select class="form-control" data-placeholder="Seçiniz..." multiple id="productsByCompany"></select>
+                            <br />
+                            <input type="checkbox" id="selectAllProductsByCompany">Hepsini Seç
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group margin-top-25 text-center">
+                            <button id="btnListByCompany" class="btn btn-success border-8-radius">Listele</button>
+                            <button id="btnClearByCompany" class="btn btn-warning border-8-radius">Temizle</button>
+                        </div>
+                    </div>
+                    <button id="btnExcelFileDownloadByCompany">Excel İndir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+        <div class="col-xs-6">
+            <div id="offerReportChart">
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div id="offerReportInfo">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/chart/apexcharts.min.js"></script>
+    <script type="text/javascript" src="~/js/offerreport/offerreport.js"></script>
+    <script src="~/daterangepicker/js/moment.min.js"></script>
+    <script src="~/daterangepicker/js/datetime-moment.js"></script>
+    <script src="~/daterangepicker/js/daterangepicker.js"></script>
+    <link href="~/daterangepicker/css/daterangepicker.css" rel="stylesheet" />
+}

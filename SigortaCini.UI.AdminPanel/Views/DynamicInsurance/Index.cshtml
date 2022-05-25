@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewData["Title"] = "Dinamik Kasko Teminat Parametreleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Dinamik Kasko Teminat Parametreleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnParameterAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Teminat Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+           
+            <table class="table table-striped table-bordered table-hover" id="parameter_table">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+
+                        <th class="no-cursor">
+                            Servis Ad
+                        </th>
+                        <th class="no-cursor">
+                            Değer
+                        </th>
+
+                        <th class="no-cursor">
+                            Servis Değer
+                        </th>
+                        <th class="no-cursor">
+                            Şirket
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="UpdateParameterModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Parametre Güncelle
+
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="col-md-12 p-d-0">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Açıklama</label>
+                        <input type="text" class="form-control input" id="description" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Value</label>
+                        <input type="text" class="form-control input" id="value" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Output</label>
+                        <input type="text" class="form-control input" id="output" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Durum</label>
+                        <div class="checkbox checkbox-success IsActiveDiv padding-left-10 margin-top-15">
+                            <input type="checkbox" id="IsActive">
+                            <label for="IsActive">Aktif</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12 p-d-0 hr"></div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="parameterUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+            <input type="hidden" id="parameterId">
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts {  
+    <script src="~/js/parameters/dynamicinsurance/dynamicinsurance.js"></script>   
+}

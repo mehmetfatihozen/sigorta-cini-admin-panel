@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "(MQ) Ayarları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-6 col-sm-6 col-xs-6 text-left caption p-d-0">
+        (MQ) Ayarları
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6 text-right p-d-0">
+        <div class="actions">
+
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black hide" id="btnCompaniesInsuranceActivitySave">
+                <i class="fa fa-save pink-color"></i>
+                Kaydet
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Şirket Seçiniz</label>
+                    <select class="form-control ddlCompaniesInsuranceActivity" data-placeholder="Select..." tabindex="-1" title="" id="ddlCompaniesInsuranceActivity">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+                <div class="form-group hide" id="alt_content">
+                    <label for="selectUsersMultiple">Ürünleri Seçiniz</label>
+                    <div class="productsCheckBox" style="padding-left: 25px;overflow-y: scroll;height:230px">
+
+                    </div>
+                </div>
+                <div class="form-group hide" id="alt_no_data_content">
+                    <div>
+                        Sonuç Bulunamadı
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+   
+    <script src="~/js/company/insurance/companyInsuranceActivity.js"></script>
+
+}
+

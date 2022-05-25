@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewData["Title"] = "Kampanya Kodu Sonuç Ekranı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Kampanya Kodu Sonuç Ekranı
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+           
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnpr">
+                <i class="fa fa-chain pink-color"></i>
+                Organizasyon Seç
+            </a>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="codeModala" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Organizasyon
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon</label>
+                        <select class="form-control" data-placeholder="Seçiniz..." tabindex="-1" id="organ">
+                            <option value="">Seçiniz</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <input type="hidden" id="codeId" />
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" disabled="disabled" id="btnAddCode">Getir</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="resultTable">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        
+                        <th class="no-cursor">
+                            Kampanya Kodu
+                        </th>
+                        <th class="no-cursor">
+                            Oluşturan
+                        </th>
+                        <th class="no-cursor">
+                            Poliçe Durumu
+                        </th>
+                        <th class="no-cursor">
+                            Task Durumu
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="resultDetails" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">Kampanya Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Task Kodu</label>
+                        <input type="text" class="form-control input" disabled id="task_code" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Müşteri Adı-Soyadı</label>
+                        <input type="text" class="form-control input" disabled id="full_name">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Lisans Numarası</label>
+                        <input type="text" class="form-control input" disabled id="license_no">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Poliçe Kodu</label>
+                        <input type="text" class="form-control input" disabled id="policy_code">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Kimlik No</label>
+                        <input type="text" class="form-control input" disabled id="identification_no">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Plaka</label>
+                        <input type="text" class="form-control input" disabled id="plate">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    
+    <script type="text/javascript" src="~/js/campaigncoderesult/campaigncoderesult.js"></script>
+
+}

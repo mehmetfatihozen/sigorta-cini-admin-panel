@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Genel Ayarlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+        Genel Ayarlar
+    </div>
+<div class="row">
+    <div class="col-sm-4">
+
+        <div class="card card-price">
+
+            <div class="card-body">
+                <div class="price">UAVT</div>
+                <div class="lead">Uavt Servisi Aç / Kapat</div>
+                <ul class="details">
+                    <li>
+                        <div class="UavtB2bIsActiveDiv">
+                            <label class="detail-title">Uavt Servisi Durumu B2B</label>
+                            <input type="checkbox" id="uavtStateb2b" class="custom-control-input" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="UavtB2cIsActiveDiv">
+                            <label class="detail-title">Uavt Servisi Durumu B2C</label>
+                            <input type="checkbox" id="uavtStateb2c" class="custom-control-input" />
+                        </div>
+                    </li>
+                </ul>
+                <a id="btne" class="btn btn-primary btn-lg btn-block buy-now">
+                    Güncelle <span class="glyphicon glyphicon-refresh"></span>
+                </a>
+            </div>
+        </div>
+        <input type="hidden" id="settingsId" />
+
+    </div>
+    <div class="col-sm-4">
+
+        <div class="card card-price">
+
+            <div class="card-body">
+                <div class="price">ARAÇ</div>
+                <div class="lead line-height-second">Araç Listesi Güncelle</div>
+                <ul class="details">
+                    <li>
+                        <div>
+                            <form id="upload_car_form">
+                                <input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="uploaded_file" />
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <br />
+                <br />
+                    <button type="button" id="upload_file" class="btn btn-primary btn-lg btn-block buy-now">
+                        Yükle <span class="glyphicon glyphicon-cloud-upload"></span>
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+  <script src="~/js/setting/setting.js"></script>
+}

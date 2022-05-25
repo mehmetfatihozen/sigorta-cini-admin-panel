@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Lead Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Lead Listesi
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12 form-group">
+                    <label class="row col-xs-12">Oluşturulma Tarihi&nbsp;<i class="fa fa-calendar"></i></label>
+                    <input id="dateRange" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group margin-top-25 text-center">
+                    <button id="btnList" class="btn btn-success border-8-radius">Listele</button>
+                    <button id="btnClear" class="btn btn-warning border-8-radius">Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="leadTable" style="width:100%">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">
+                            Id
+                        </th>
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+                        <th class="no-cursor">
+                            Soyad
+                        </th>
+                        <th class="no-cursor">
+                            Ürün
+                        </th>
+                        <th class="no-cursor">
+                            Telefon
+                        </th>
+                        <th class="no-cursor">
+                            Email
+                        </th>
+                        <th class="no-cursor">
+                            TC Kimlik No
+                        </th>
+                        <th class="no-cursor">
+                            Plaka
+                        </th>
+                        <th class="no-cursor">
+                            Ruhsat No
+                        </th>
+                        <th class="no-cursor">
+                            İl
+                        </th>
+                        <th class="no-cursor">
+                            İlçe
+                        </th>
+                        <th class="no-cursor">
+                            Oluşturulma Tarihi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/lead/lead.js"></script>
+    <script src="~/daterangepicker/js/moment.min.js"></script>
+    <script src="~/daterangepicker/js/datetime-moment.js"></script>
+    <script src="~/daterangepicker/js/daterangepicker.js"></script>
+    <link href="~/daterangepicker/css/daterangepicker.css" rel="stylesheet" />
+}

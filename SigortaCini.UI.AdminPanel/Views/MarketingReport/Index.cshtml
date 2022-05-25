@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Pazarlama Raporu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Pazarlama Raporu
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label>Kaynak</label>
+                    <select class="form-control" data-placeholder="Seçiniz..." id="tenants" multiple></select>
+                    <br />
+                    <input type="checkbox" id="selectAllTenants">Hepsini Seç
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label class="col-xs-12 pad-left-0">Tarih&nbsp;<i class="fa fa-calendar"></i></label>
+                    <input id="dateRangeList" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group margin-top-25 text-center">
+                    <button id="btnList" class="btn btn-success border-8-radius">Listele</button>
+                    <button id="btnClear" class="btn btn-warning border-8-radius">Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table style="width:100%" class="table table-striped table-bordered table-hover" id="marketingReportTable">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">Ad</th>
+                        <th class="no-cursor">Soyad</th>
+                        <th class="no-cursor">TC / VK Numarası</th>
+                        <th class="no-cursor">Adres</th>
+                        <th class="no-cursor">E-Posta</th>
+
+                        <th class="no-cursor">Gelinen Ürün</th>
+                        <th class="no-cursor">Kaynak</th>
+                        <th class="no-cursor">Yönlendirme Yapan</th>
+                        <th class="no-cursor">Yönlendirilen</th>
+                        <th class="no-cursor">Görevli Temsilci Şube</th>
+
+                        <th class="no-cursor">Sigorta Ettiren</th>
+
+                        <th class="no-cursor">GSM No</th>
+                        <th class="no-cursor">Şehir</th>
+                        <th class="no-cursor">İlçe</th>
+                        <th class="no-cursor">Son Durum İşlem Tipi</th>
+                        <th class="no-cursor">Ruhsat / Asbis No</th>
+                        <th class="no-cursor">Şasi No</th>
+                        <th class="no-cursor">Motor No</th>
+                        <th class="no-cursor">Plaka</th>
+                        <th class="no-cursor">Marka</th>
+                        <th class="no-cursor">Model</th>
+
+                        <th class="no-cursor">Kayıt Tarihi</th>
+                        <th class="no-cursor">Kayıt Saati</th>
+                        <th class="no-cursor">Son İşlem Tarihi</th>
+                        <th class="no-cursor">Son İşlem Saati</th>
+
+                        <th class="no-cursor">Kampanya Kodu</th>
+                        <th class="no-cursor">Kampanya Kurum Adı</th>
+                        <th class="no-cursor">KVKK ve Gizlilik Onay</th>
+                        <th class="no-cursor">İletişim Onay</th>
+                        <th class="no-cursor">Mesafeli Satış Onay</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/marketingReport/marketingReport.js"></script>
+    <script src="~/daterangepicker/js/moment.min.js"></script>
+    <script src="~/daterangepicker/js/datetime-moment.js"></script>
+    <script src="~/daterangepicker/js/daterangepicker.js"></script>
+    <link href="~/daterangepicker/css/daterangepicker.css" rel="stylesheet" />
+}

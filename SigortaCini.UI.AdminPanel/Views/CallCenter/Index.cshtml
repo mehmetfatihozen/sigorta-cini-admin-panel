@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Call Center";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Call Center İşlemleri
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="call_center_table">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">
+                            Task Id
+                        </th>
+                        <th class="no-cursor">
+                            TC NO
+                        </th>
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+                        <th class="no-cursor">
+                            Soyad
+                        </th>
+                        <th class="no-cursor">
+                            Email
+                        </th>
+                        <th class="no-cursor">
+                            Telefon
+                        </th>
+                        <th class="no-cursor">
+                            Ürün
+                        </th>
+                        <th class="no-cursor">
+                            Tarih
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/callcenter/callcenter.js"></script>
+}

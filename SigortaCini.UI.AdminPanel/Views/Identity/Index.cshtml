@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "EGM Ayarları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        EGM Ayarları
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a class="btn btn-default btn-sm bg-black" id="save">
+                <i class="fa fa-save pink-color"></i>
+                Kaydet
+            </a>
+        </div>
+    </div>
+</div>
+<!-- BEGIN PORTLET-->
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-body">
+                <div class="form-group" id="content">
+                    <input type="checkbox" id="selectAll">
+                    <label class="font-weight-bold font-size-14">Hepsini Seç</label>
+                    <br />
+                    <label>Lütfen Şirket Seçiniz</label>
+                    <div class="col-md-12 p-d-0 hr no-margin-all"></div>
+                    <div class="categoriesCheckBox" style="padding-left: 25px;overflow-y: scroll;height:230px; margin-top: 15px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/js/company/identity/identity.js"></script>
+}

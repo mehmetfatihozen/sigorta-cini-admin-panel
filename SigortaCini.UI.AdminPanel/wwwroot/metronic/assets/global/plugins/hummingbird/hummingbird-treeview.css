@@ -1,0 +1,50 @@
+.hummingbird-treeview,
+.hummingbird-treeview * {
+    
+    font-size: 15px;
+    line-height: 24px;
+    list-style: none;
+}
+
+    .hummingbird-treeview ul li::before {
+        content: "\2022";
+        color: #E51A92;
+        font-size: 13px;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+.hummingbird-treeview-no-lines,
+.hummingbird-treeview-no-lines * {
+    font-size: 15px;
+    line-height: 24px;
+    list-style: none;
+}
+    .hummingbird-treeview label {
+        font-weight: normal;
+    }
+
+
+    .hummingbird-treeview input[type=checkbox] {
+        width: 16px;
+        height: 16px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    
+
+    .hummingbird-treeview .fa {
+        font-style: normal;
+        cursor: pointer;
+    }
+
+    .hummingbird-treeview .fas {
+        font-style: normal;
+        cursor: pointer;
+    }
+
+.hummingbird-base {
+    white-space: nowrap;
+}

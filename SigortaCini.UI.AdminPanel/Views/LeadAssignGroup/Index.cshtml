@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewData["Title"] = "Lead Assign Group İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Lead Assign Group İşlemleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnLeadAssignGroupAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Lead Assign Group Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="leadAssignGroupTable">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="leadAssignGroupAddModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Lead Assign Group Ekle
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="leadAssignGroupForm">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Ana Lead Assign Group Mu ?</label>
+                                <div class="checkbox checkbox-success isParentLeadAssignGroupDiv padding-left-36 margin-bottom-m4">
+                                    <input type="checkbox" id="isParentLeadAssignGroup">
+                                    <label for="isParentLeadAssignGroup">Evet</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Ana Lead Assign Group</label>
+                                <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="leadAssignGroupParentId">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-6 pad-left-0 padding-right-0">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label">Lead Assign Group Adı</label>
+                                    <input type="text" class="form-control input" placeholder="Lead Assign Group Adı" id="leadAssignGroupName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pad-left-0 padding-right-0">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label">Lead Assign Group Açıklaması</label>
+                                    <input type="text" class="form-control input" placeholder="Lead Assign Group Açıklaması" id="leadAssignGroupDesc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left  width-100 fnt-14" form="leadAssignGroupForm">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="leadAssignGroupUpdateModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Lead Assign Group Güncelle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="leadAssignGroupFormUpdate">
+                    <input type="hidden" id="leadAssignGroupId">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Ana Lead Assign Group Mu ?</label>
+                                <div class="checkbox checkbox-success isParentLeadAssignGroupDivUpdate padding-left-36 margin-bottom-m4">
+                                    <input type="checkbox" id="isParentLeadAssignGroupUpdate">
+                                    <label for="isParentLeadAssignGroupUpdate">Evet</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Ana Lead Assign Group</label>
+                                <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="leadAssignGroupParentIdUpdate">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-6 pad-left-0 padding-right-0">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label">Lead Assign Group Adı</label>
+                                    <input type="text" class="form-control input" placeholder="Lead Assign Group Adı" id="leadAssignGroupNameUpdate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pad-left-0 padding-right-0">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label">Lead Assign Group Açıklaması</label>
+                                    <input type="text" class="form-control input" placeholder="Lead Assign Group Açıklaması" id="leadAssignGroupDescUpdate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left  width-100 fnt-14" form="leadAssignGroupFormUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/leadassigngroup/leadassigngroup.js"></script>
+}

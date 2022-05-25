@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewData["Title"] = "Hata Mesajları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Hata Mesajları
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnErrorMessageAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Hata Mesajı Ekle
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="errorMessageTable" width="100%">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">
+                            Hata Kodu
+                        </th>
+                        <th class="no-cursor">
+                            Hata Mesajı
+                        </th>
+                        <th class="no-cursor">
+                            Açıklama
+                        </th>
+                        <th class="no-cursor">
+                            Kaynak
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorMessageModalUpdate" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Hata Mesajı Güncelle
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Hata Kodu</label>
+                    <input type="text" id="errorMessageCodeUpdate" class="form-control">
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Hata Mesajı</label>
+                    <textarea rows="3" id="errorMessageNameUpdate" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Açıklama</label>
+                    <textarea rows="3" id="errorMessageDescUpdate" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Kaynak</label>
+                    <select class="form-control" id="errorMessageSourceUpdate">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnErrorMessageUpdate">Güncelle</button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+            <input type="hidden" id="errorMessageIdUpdate">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorMessageModalAdd" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Hata Mesajı Ekle
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Hata Kodu</label>
+                    <input type="text" id="errorMessageCodeAdd" class="form-control">
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Hata Mesajı</label>
+                    <textarea rows="3" id="errorMessageNameAdd" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Açıklama</label>
+                    <textarea rows="3" id="errorMessageDescAdd" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Kaynak</label>
+                    <select class="form-control" id="errorMessageSourceAdd">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnErrorMessageCreate">Ekle</button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/errormessage/errormessage.js"></script>
+}

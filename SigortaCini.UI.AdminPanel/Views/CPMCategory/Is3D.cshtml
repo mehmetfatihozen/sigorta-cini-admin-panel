@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "3D Secure ile Ödeme Ayarları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        3D Secure ile Ödeme Ayarları
+    </div>
+</div>
+
+<!-- BEGIN PORTLET-->
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Şirket Seçiniz</label>
+                    <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="ddlCompanies">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row hide" id="alt_content_b2b">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="row margin-bottom-25">
+                <div class="col-md-6">
+                    <label>B2B 3D ile Ödeme Aktif Edilecek Ürünleri Seçiniz</label>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnCPMCategorySaveB2BIs3D">
+                        <i class="fa fa-save pink-color"></i>
+                        B2B İçin Kaydet
+                    </a>
+                </div>
+            </div>
+            <div class="categoriesCheckBoxB2b" style="padding-left: 25px;overflow-y: scroll;height:200px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row hide" id="alt_content_b2c">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="row margin-bottom-25">
+                <div class="col-md-6">
+                    <label>B2C 3D ile Ödeme Aktif Edilecek Ürünleri Seçiniz</label>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnCPMCategorySaveB2CIs3D">
+                        <i class="fa fa-save pink-color"></i>
+                        B2C İçin Kaydet
+                    </a>
+                </div>
+            </div>
+            <div class="categoriesCheckBoxB2c" style="padding-left: 25px;overflow-y: scroll;height:200px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/company/cpmCategory/is3D.js"></script>
+}

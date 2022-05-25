@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Alt Ürün Kategori Ayarları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Alt Ürün Kategori Ayarları
+    </div>
+</div>
+
+<!-- BEGIN PORTLET-->
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Şirket Seçiniz</label>
+                    <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="ddlCompanies">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black hide" id="btnCPMCategorySaveB2B">
+                <i class="fa fa-save pink-color"></i>
+                B2B ve MQ Kategori Kaydet
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row hide" id="alt_content">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-group">
+                <label>B2B ve MQ Kategorilerini Seçiniz</label>
+                <div class="categoriesCheckBox" style="padding-left: 25px;overflow-y: scroll;height:200px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black hide" id="btnCPMCategorySaveB2C">
+                <i class="fa fa-save pink-color"></i>
+                B2C Kategori Kaydet
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row hide" id="alt_content_b2c">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="form-group">
+                <label>B2C Kategorilerini Seçiniz</label>
+                <div class="categoriesCheckBoxB2c" style="padding-left: 25px;overflow-y: scroll;height:200px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/js/company/cpmCategory/cpmCategory.js"></script>
+}
+

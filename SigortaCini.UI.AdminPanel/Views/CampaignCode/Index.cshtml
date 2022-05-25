@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewData["Title"] = "Organizasyon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Organizasyon
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnOrganizationAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Organizasyon Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="organizationTable">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        <th class="no-cursor">
+                            Organizasyon Kodu
+                        </th>
+                        <th class="no-cursor">
+                            Organizasyon Adı
+                        </th>
+                        <th class="no-cursor">
+                            Organizasyon Tel
+                        </th>
+                        <th class="no-cursor">
+                            Organizasyon Email
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <input type="file" id="campainFile" style="width: 15%;" class="btn btn-default btn-sm bg-black" />
+</div>
+
+<!-- Modal content-->
+<div class="modal fade" id="organizationModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Organizasyon Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Kodu</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Kodu" id="organization_code">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Tel</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Tel" id="organization_tel">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Adı</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Adı" id="organization_name">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Email</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Email" id="organization_email">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnAdd">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="organizationUpdateModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Organizasyon Güncelle
+
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Kodu</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Kodu" id="organization_code_update">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Tel</label>
+                        <input type="text" class="form-control input" placeholder="__-__-____" id="organization_tel_update">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Adı</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Adı" id="organization_name_update">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon Email</label>
+                        <input type="text" class="form-control input" placeholder="Organizasyon Email" id="organization_email_update">
+                    </div>
+                </div>
+                
+                
+
+                <input type="hidden" id="orId">
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+   
+    <script type="text/javascript" src="~/js/campaigncode/campaigncode.js"></script>
+
+}

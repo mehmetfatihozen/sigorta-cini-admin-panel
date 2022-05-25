@@ -1,0 +1,228 @@
+﻿
+@{
+    ViewData["Title"] = "Müşteri Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="col-md-12 col-sm-12 col-xs-12  top_band">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+            Müşteri Detay
+        </div>
+
+    </div>
+
+  
+
+<br />
+<div class="col-md-12">
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="active border-1-black"><a data-toggle="pill" href="#customer">Customer</a></li>
+        <li class="border-1-black"><a data-toggle="pill" id="leadContent" href="#lead">Lead</a></li>
+    </ul>
+
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div id="customer" class="tab-pane fade in active">
+                    
+
+                    <table class="table table-striped table-bordered table-hover" id="customerTable">
+                        <thead>
+                            <tr class="table_thead_back">
+
+
+                                <th class="no-cursor">
+                                    Ad
+                                </th>
+                                <th class="no-cursor">
+                                    Soyad
+                                </th>
+                                <th class="no-cursor">
+                                    Telefon
+                                </th>
+                                <th class="no-cursor">
+                                    Email
+                                </th>
+                                <th class="no-cursor">
+                                    Ürün
+                                </th>
+                                <th class="no-cursor">
+                                    Durum
+                                </th>
+                                <th class="no-cursor">
+                                    Oluşturulma Tarih
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+
+                </div>
+                <div id="lead" class="tab-pane fade">
+
+                    <table class="table table-striped table-bordered table-hover" id="leadTable">
+                        <thead>
+                            <tr class="table_thead_back">
+
+
+                                <th class="no-cursor">
+                                    TC No / VKN No
+                                </th>
+                                <th class="no-cursor">
+                                    Ad
+                                </th>
+                                <th class="no-cursor">
+                                    Soyad
+                                </th>
+                                <th class="no-cursor">
+                                    Ürün
+                                </th>
+                                <th class="no-cursor">
+                                    Durum
+                                </th>
+                                <th class="no-cursor">
+                                    Oluşturulma Tarihi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                
+            </div>
+           
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="customerDetails" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">Müşteri Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Ad</label>
+                        <input type="text" class="form-control input" disabled id="name" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">TC No</label>
+                        <input type="text" class="form-control input" disabled id="identificationNo">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Cinsiyet</label>
+                        <input type="text" class="form-control input" disabled id="gender">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Soyad</label>
+                        <input type="text" class="form-control input" disabled id="surname" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doğum Tarihi</label>
+                        <input type="text" class="form-control input" disabled id="birthDate">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Oluşturulma Tarihi</label>
+                        <input type="text" class="form-control input" disabled id="createDate">
+                    </div>
+                </div>
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Telefonlar</label>
+                        <select class="form-control" multiple disabled id="phonesList"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Emailler</label>
+                        <select class="form-control" multiple disabled id="emailsList"></select>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col-md-12 p-d-0 hr"></div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="leadDetails" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">Müşteri Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-6">
+                    <label class="control-label">TC No / VKN</label>
+                    <input type="text" class="form-control input" disabled id="identificationNoLead">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label">Oluşturulma Tarihi</label>
+                    <input type="text" class="form-control input" disabled id="createDateLead">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label">Ad</label>
+                    <input type="text" class="form-control input" disabled id="leadName">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label">Soyad</label>
+                    <input type="text" class="form-control input" disabled id="leadSurname">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label">Email</label>
+                    <input type="text" class="form-control input" disabled id="leadEmail">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label">Telefon</label>
+                    <input type="text" class="form-control input" disabled id="leadPhone">
+                </div>
+
+            </div>
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/customerdetail/customerdetail.js"></script>
+}
+

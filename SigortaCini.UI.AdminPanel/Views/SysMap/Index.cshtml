@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "SYS MAP Parametreleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        SYS MAP Parametreleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black hide" id="save_menus">
+                <i class="fa fa-save pink-color"></i>
+                Kaydet
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="portlet-body form">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label>Rol Seçiniz</label>
+                        <select class="form-control ddl" data-placeholder="Seçiniz..." tabindex="-1" title="" id="roles">
+                            <option>Seçiniz</option>
+
+                        </select>
+                        <input type="hidden" id="roleId" />
+                    </div>
+                    <div class="form-group hide" id="alt_content">
+                        <label>Hepsini Seç</label>
+                        <input type="checkbox" id="selectAll">
+                        <div class="usersCheckBox" style="padding-left: 25px;overflow-y: scroll;height:230px">
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript" src="~/js/parameters/sysparameters/map.js"></script>
+
+}

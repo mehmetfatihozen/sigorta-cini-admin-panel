@@ -1,0 +1,392 @@
+﻿
+@{
+    ViewData["Title"] = "Tenant İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Tenant İşlemleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnTenantAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Tenant Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <input type="hidden" id="taskAssignPool" />
+            <table class="table table-striped table-bordered table-hover" id="tenanttable">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+                        <th class="no-cursor">
+                            Açıklama
+                        </th>
+                        <th class="no-cursor">
+                            Telefon
+                        </th>
+                        <th class="no-cursor">
+                            Email
+                        </th>
+                        <th class="no-cursor">
+                            Havuz
+                        </th>
+                        <th class="no-cursor">
+                            Token
+                        </th>
+                        <th class="no-cursor">
+                            Ana Tenant
+                        </th>
+                        <th class="no-cursor">
+                            Durum
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="tenantAddModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Tenant Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="tenant_form">
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Default Tenant Mı ?</label>
+                            <div class="checkbox checkbox-success IsSigortaCiniDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="IsSigortaCini">
+                                <label for="IsSigortaCini">Evet</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label margin-bottom-10">Ana Tenant</label>
+                            <select class="form-control" id="parent_tenant">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Lead Mi ?</label>
+                            <div class="checkbox checkbox-success IsLeadDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="IsLead">
+                                <label for="IsLead">Evet</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Ad</label>
+                            <input type="text" autocomplete="off" class="form-control input" placeholder="Tenant Adı" id="tenant_name">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Telefon</label>
+                            <input type="tel" autocomplete="off" class="form-control input" placeholder="Tenant Telefonu" id="tenant_tel">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Açıklama</label>
+                            <input type="text" autocomplete="off" class="form-control input" placeholder="Tenant Açıklaması" id="tenant_desc">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Kullanıcı Kodu Görünecek mi?</label>
+                            <div class="checkbox checkbox-success IsLeadUserCodeActiveDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="isLeadUserCodeActive">
+                                <label for="isLeadUserCodeActive">Evet</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Ruhsat Gizlensin mi?</label>
+                            <div class="checkbox checkbox-success IsRegistryActiveDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="isRegistryActive">
+                                <label for="isRegistryActive">Evet</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Gözükmeme Durumları</label>
+                        <div class="checkbox checkbox-success AllowCallYouDiv padding-left-23">
+                            <input type="checkbox" id="AllowCallYou">
+                            <label for="AllowCallYou">Sizi Arayalım</label>
+                        </div>
+                        <div class="checkbox checkbox-success CampaignCodeDiv padding-left-23">
+                            <input type="checkbox" id="CampaignCode">
+                            <label for="CampaignCode">Kampanya Kodu</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Giriş Tipi</label>
+                        <input type="text" autocomplete="off" class="form-control input margin-bottom-15" placeholder="Tenant Emaili" id="tenan_email">
+                        <label class="radio-inline">
+                            <input id="emailtype1" type="radio" value="1" name="mygroup">
+                            Sadece Domain
+                        </label>
+                        <label class="radio-inline">
+                            <input id="emailtype2" type="radio" value="2" name="mygroup">
+                            Tüm Mailler
+                        </label>
+                        <input type="hidden" id="mygroupid" />
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Ürün</label>
+                            <br />
+                            <input type="checkbox" id="selectAllProducts">Hepsini Seç
+                            <select class="form-control" data-placeholder="Seçiniz..." multiple id="product_name">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Logo</label>
+                            <input type="file" class="w112p" name="file" accept="image/*" id="tenant_image" />
+                            <br />
+                            <label class="control-label">Aktiflik Durumu</label>
+                            <div class="checkbox checkbox-success TenantIsActiveDiv padding-left-23">
+                                <input type="checkbox" id="TenantIsActive">
+                                <label for="TenantIsActive">Aktif</label>
+                            </div>
+                            <div class="checkbox checkbox-success SmsActiveDiv padding-left-23">
+                                <input type="checkbox" id="SmsActive">
+                                <label for="SmsActive">Sms ile giriş</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-8">
+                            <img class="img-responsive h-133 width-100 " id="tenant_preview_image" src="#" />
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-12 p-d-0 hr"></div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left width-100 fnt-14" form="tenant_form">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="tenantUpdateModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Tenant Güncelle
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="tenant_update_form">
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Default Tenant Mı ?</label>
+                            <div class="checkbox checkbox-success IsSigortaCiniUpdateDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="IsSigortaCiniUpdate">
+                                <label for="IsSigortaCiniUpdate">Evet</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Ana Tenant</label>
+                            <select class="form-control" id="parent_tenant_update">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Lead Mi ?</label>
+                            <div class="checkbox checkbox-success IsLeadUpdateDiv padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="IsLeadUpdate">
+                                <label for="IsLeadUpdate">Evet</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Ad</label>
+                            <input type="text" autocomplete="off" class="form-control input" placeholder="Tenant Adı" id="tenant_update_name">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Telefon</label>
+                            <input type="tel" autocomplete="off" class="form-control input" placeholder="Tenant Telefonu" id="tenant_update_tel">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Açıklama</label>
+                            <input type="text" autocomplete="off" class="form-control input" placeholder="Tenant Açıklaması" id="tenant_update_desc">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Kullanıcı Kodu Görünecek mi?</label>
+                            <div class="checkbox checkbox-success IsLeadUserCodeActiveDivUpdate padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="isLeadUserCodeActiveUpdate">
+                                <label for="isLeadUserCodeActiveUpdate">Evet</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Ruhsat Gizlensin mi?</label>
+                            <div class="checkbox checkbox-success IsRegistryActiveDivUpdate padding-left-23 margin-bottom-m4">
+                                <input type="checkbox" id="isRegistryActiveUpdate">
+                                <label for="isRegistryActiveUpdate">Evet</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-7">
+                            <label class="control-label">Token</label>
+                            <input type="text" autocomplete="off" class="form-control input" placeholder="Token" id="tenant_update_token">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label class="control-label">Havuz</label>
+                            <select class="form-control" id="tenant_update_pool">
+                                <option>Seçiniz</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Lead Assign Group</label>
+                            <select class="form-control" id="tenant_update_lead_assign_group">
+                                <option>Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Gözükmeme Durumları</label>
+                        <div class="checkbox checkbox-success AllowCallYouUpdateDiv padding-left-23">
+                            <input type="checkbox" id="AllowCallYouUpdate">
+                            <label for="AllowCallYouUpdate">Sizi Arayalım</label>
+                        </div>
+                        <div class="checkbox checkbox-success CampaignCodeUpdateDiv padding-left-23">
+                            <input type="checkbox" id="CampaignCodeUpdate">
+                            <label for="CampaignCodeUpdate">Kampanya Kodu</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Giriş Tipi</label>
+                        <input type="text" autocomplete="off" class="form-control input margin-bottom-15" placeholder="Tenant Emaili" id="tenant_update_email">
+                        <label class="radio-inline">
+                            <input id="emailtypeforupdate1" type="radio" value="1" name="mygroupupdate">
+                            Sadece Domain
+                        </label>
+                        <label class="radio-inline">
+                            <input id="emailtypeforupdate2" type="radio" value="2" name="mygroupupdate">
+                            Tüm Mailler
+                        </label>
+                        <input type="hidden" id="mygroupidforupdate" />
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Ürün</label>
+                            <br />
+                            <input type="checkbox" id="selectAllProductsForUpdate">Hepsini Seç
+                            <select class="form-control" data-placeholder="Seçiniz..." multiple id="product_name_update"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label" data-toggle="tooltip" title="10 x 150">Logo</label>
+                            <input type="file" class="w112p" name="file" accept="image/*" id="tenant_update_image" />
+                            <br />
+                            <label class="control-label">Aktiflik Durumu</label>
+                            <div class="checkbox checkbox-success TenantUpdateIsActiveDiv padding-left-23">
+                                <input type="checkbox" id="TenantUpdateIsActive">
+                                <label for="TenantUpdateIsActive">Aktif</label>
+                            </div>
+                            <div class="checkbox checkbox-success SmsActiveUpdateDiv padding-left-23">
+                                <input type="checkbox" id="SmsActiveUpdate">
+                                <label for="SmsActiveUpdate">Sms ile giriş</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <img class="img-responsive h-133 width-100 " id="tenant_view_image" src="" />
+                        </div>
+
+                    </div>
+                    <input type="hidden" id="tenantId">
+
+                </form>
+            </div>
+            <div class="col-md-12 p-d-0 hr"></div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left width-100 fnt-14" form="tenant_update_form">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/tenant/tenant.js"></script>
+}

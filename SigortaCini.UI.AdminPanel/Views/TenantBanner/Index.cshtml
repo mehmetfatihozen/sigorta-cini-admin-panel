@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewData["Title"] = "Tenant Banner Parametreleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+
+
+}
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Banner Parametreleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnParameterAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Banner Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="parameter_table">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        <th class="no-cursor">
+                            Ad
+                        </th>
+                      
+                        <th class="no-cursor">
+                            Tip
+                        </th>
+                        <th class="no-cursor">
+                            Ürün
+                        </th>
+                        <th class="no-cursor">
+                            Tenant
+                        </th>
+                        <th class="no-cursor">
+                            Durum
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal content-->
+<div class="modal fade" id="UpdateParameterModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Banner Güncelle
+
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="banner_update_form">
+                    <div class="form-group col-md-12 p-d-0">
+                        <div class="col-md-6">
+                            <label class="control-label">Banner Adı</label>
+                            <input type="text" class="form-control input" placeholder="Banner Adı" id="parameter_name_update">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label">Tip</label>
+                            <select class="form-control" id="parameter_type_update">
+                                <option value="">Seçiniz</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                   
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="form-group col-md-12 p-d-0">
+                        <div class="col-md-6">
+                            <label class="control-label">Tenant</label>
+                            <select class="form-control" id="parameter_tenant_update">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label">Ürün</label>
+                            <select class="form-control" id="parameter_product_update">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label" data-toggle="tooltip" title="10 x 150">Resim</label>
+                            <input type="file" class="w112p" name="file" accept="image/*" id="parameter_image_update" />
+                            <br />
+                            <label class="control-label">Aktiflik Durumu</label>
+                            <div class="checkbox checkbox-success parameterActiveUpdateDiv padding-left-23">
+                                <input type="checkbox" id="parameterActiveUpdate">
+                                <label for="parameterActiveUpdate">Aktif</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <img class="img-responsive h-133 width-100 " id="parameter_image_preview_update" src="#" />
+                        </div>
+
+                    </div>
+                    </form>
+            </div>
+            <div class="col-md-12 p-d-0 hr"></div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left width-100 fnt-14" form="banner_update_form">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+            <input type="hidden" id="parameterId">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="AddParameterModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Banner Ekle
+
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="banner_form">
+                    <div class="form-group col-md-12 p-d-0">
+                        <div class="col-md-6">
+                            <label class="control-label">Banner Adı</label>
+                            <input type="text" class="form-control input" placeholder="Banner Adı" id="parameter_name">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label">Tip</label>
+                            <select class="form-control" id="parameter_type">
+                                <option value="">Seçiniz</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                   
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+                    <div class="form-group col-md-12 p-d-0">
+                        <div class="col-md-6">
+                            <label class="control-label">Tenant</label>
+                            <select class="form-control" id="parameter_tenant">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label">Ürün</label>
+                            <select class="form-control" id="parameter_product">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-d-0 hr"></div>
+
+
+                    <div class="col-md-12 p-d-0">
+                        <div class="form-group col-md-4">
+                            <label class="control-label" data-toggle="tooltip" title="10 x 150">Resim</label>
+                            <input type="file" class="w112p" name="file" accept="image/*" id="parameter_image" />
+                            <br />
+                            <label class="control-label">Aktiflik Durumu</label>
+                            <div class="checkbox checkbox-success parameterActiveDiv padding-left-23">
+                                <input type="checkbox" id="parameterActive">
+                                <label for="parameterActive">Aktif</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <img class="img-responsive h-133 width-100 " id="parameter_image_preview" src="#" />
+                        </div>
+
+                    </div>
+                    </form>
+            </div>
+            <div class="col-md-12 p-d-0 hr"></div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success pull-left width-100 fnt-14" form="banner_form">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts {
+    
+    <script type="text/javascript" src="~/js/parameters/tenantparameters/banner.js"></script>
+
+}

@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewData["Title"] = "Task Doküman Tipleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Task Doküman Tipleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnTaskDocumentTypeOpenModal">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Doküman Ekle
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="sampleTaskDocumentType_2">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        
+                        <th class="no-cursor">
+                             Resim
+                        </th>
+                        <th class="no-cursor">
+                             Ad
+                        </th>
+                        <th class="no-cursor">
+                            Açıklama
+                        </th>
+                      
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal content-->
+<div class="modal fade" id="myModalTaskDocumentType" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Döküman Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Resim</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Resmi" id="TaskDocumentTypeImage">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Adı</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Adı" id="TaskDocumentTypeName">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Açıklaması</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Açıklaması" id="TaskDocumentTypeDesc">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnTaskDocumentTypeAdd">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalTaskDocumentTypeUpdate" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Döküman Güncelle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Resim</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Resmi" id="TaskDocumentTypeImageUpdate">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Adı</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Adı" id="TaskDocumentTypeNameUpdate">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Doküman Tipi Açıklaması</label>
+                        <input type="text" class="form-control input" placeholder="Doküman Tipi Açıklaması" id="TaskDocumentTypeDescUpdate">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnTaskDocumentTypeUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+            <input type="hidden" id="TaskDocumentTypeId">
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+   
+    <script type="text/javascript" src="~/js/parameters/taskparameters/documenttype/taskdocumenttype.js"></script>
+
+}
+

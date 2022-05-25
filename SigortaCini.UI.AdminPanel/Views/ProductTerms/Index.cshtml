@@ -1,0 +1,487 @@
+﻿
+@{
+    ViewData["Title"] = "TSS Ürün Teminatları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+
+
+}
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        TSS Ürün Teminatları
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnParameterAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Teminat Ekle
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="parameter_table">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        <th class="no-cursor">
+                            Şirket
+                        </th>
+                        <th class="no-cursor">
+                            Ürün
+                        </th>
+                        <th class="no-cursor">
+                            Yatarak
+                        </th>
+                        <th class="no-cursor">
+                            Ayakta
+                        </th>
+                        <th class="no-cursor">
+                            Bekleme Süresi
+                        </th>
+                        <th class="no-cursor">
+                            Yenileme Garantisi
+                        </th>
+                        <th class="no-cursor">
+                            Hastane Ağı
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal content-->
+<div class="modal fade" id="UpdateParameterModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Teminat Güncelle
+
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="col-md-12 p-d-0">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Sigorta Şirketi</label>
+                        <select class="form-control" id="company_update">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label class="control-label">Ürün</label>
+                        <select class="form-control" disabled="disabled" id="product_update">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Variant</label>
+                        <select class="form-control" disabled="disabled" id="variant_update">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Yatarak</label>
+                        <div class="input-group">
+                            <input type="text" id="yt_update" class="form-control" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="yt">
+                            <span class="input-group-addon">₺</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label></label>
+                        <div class="checkbox checkbox-success IsLimitAvaibleUpdateDiv padding-left-10 margin-top-15">
+                            <input type="checkbox" id="IsLimitAvaibleUpdate">
+                            <label for="IsLimitAvaibleUpdate">Limitsiz</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Ayakta</label>
+                        <div class="input-group">
+                            <input type="number" id="at_update" class="form-control">
+                            <span class="input-group-addon">Adet</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Giriş Yaşı Aralığı</label>
+                        <div class="row">
+                            <div class="col-xs-5 padding-right-0">
+                                <input type="number" min="0" step="1" id="entry_age_from_update" class="form-control">
+                            </div>
+                            <div class="col-xs-2 text-center margin-top-10 no-padding">-</div>
+                            <div class="col-xs-5 pad-left-0">
+                                <input type="number" min="0" step="1" id="entry_age_to_update" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Bekleme Süresi</label>
+                        <div class="input-group">
+                            <input type="number" id="duration_time_update" class="form-control">
+                            <span class="input-group-addon">Ay</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label></label>
+                        <div class="checkbox checkbox-success IsDurationTimeUpdateDiv padding-left-10 margin-top-15">
+                            <input type="checkbox" id="IsDurationTimeUpdate">
+                            <label for="IsDurationTimeUpdate">Yok</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Hastane Ağı</label>
+                        <input class="form-control" type="text" placeholder="https://www.ornek.com" id="institution_network_update" />
+                    </div>
+
+
+
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Yenileme Garantisi</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="mygroupupdate">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="2" name="mygroupupdate">
+                            Yok
+                        </label>
+                        <label class="radio-inline w58">
+                            <div class="input-group">
+                                <input type="number" class="form-control input" disabled="disabled" id="year_update">
+                                <span class="input-group-addon">Yıl</span>
+                            </div>
+
+                        </label>
+                        <input type="hidden" id="mygroupidupdate" />
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Psikolojik Destek Hizmeti</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="hasPsychologicalSupportUpdate">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="0" name="hasPsychologicalSupportUpdate">
+                            Yok
+                        </label>
+                        <input type="hidden" id="hasPsychologicalSupportUpdate" />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Diyetisyen Hizmeti</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="hasDieticianServiceUpdate">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="0" name="hasDieticianServiceUpdate">
+                            Yok
+                        </label>
+                        <input type="hidden" id="hasDieticianServiceUpdate" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Doğum Hizmeti</label>
+                                <div class="input-group">
+                                    <input type="number" min="1" max="50" step="1" id="numberOfBirthTermUpdate" class="form-control">
+                                    <span class="input-group-addon">Kez</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label></label>
+                                <div class="checkbox checkbox-success IsBirthTermLimitlessUpdateDiv padding-left-10 margin-top-15">
+                                    <input type="checkbox" id="isBirthTermLimitlessUpdate">
+                                    <label for="isBirthTermLimitlessUpdate">Limitsiz</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Geçmiş Hastalıklar</label>
+                        <input type="text" id="past_diseases_update" placeholder="" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="parameterUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+            <input type="hidden" id="parameterId">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="AddParameterModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Teminat Ekle
+
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="col-md-12 p-d-0">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Sigorta Şirketi</label>
+                        <select class="form-control" id="company">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label class="control-label">Ürün</label>
+                        <select class="form-control" disabled="disabled" id="product">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Variant</label>
+                        <select class="form-control" disabled="disabled" id="variant">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Yatarak</label>
+                        <div class="input-group">
+                            <input type="text" id="yt" class="form-control" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="yt">
+                            <span class="input-group-addon">₺</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label></label>
+                        <div class="checkbox checkbox-success IsLimitAvaibleDiv padding-left-10 margin-top-15">
+                            <input type="checkbox" id="IsLimitAvaible">
+                            <label for="IsLimitAvaible">Limitsiz</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Ayakta</label>
+                        <div class="input-group">
+                            <input type="number" id="at" class="form-control">
+                            <span class="input-group-addon">Adet</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 p-d-0 hr"></div>
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Giriş Yaşı Aralığı</label>
+                        <div class="row">
+                            <div class="col-xs-5 padding-right-0">
+                                <input type="number" min="0" step="1" id="entry_age_from" class="form-control">
+                            </div>
+                            <div class="col-xs-2 text-center margin-top-10 no-padding">-</div>
+                            <div class="col-xs-5 pad-left-0">
+                                <input type="number" min="0" step="1" id="entry_age_to" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Bekleme Süresi</label>
+                        <div class="input-group">
+                            <input type="number" id="duration_time" class="form-control">
+                            <span class="input-group-addon">Ay</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label></label>
+                        <div class="checkbox checkbox-success IsDurationTimeDiv padding-left-10 margin-top-15">
+                            <input type="checkbox" id="IsDurationTime">
+                            <label for="IsDurationTime">Yok</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Hastane Ağı</label>
+                        <input type="text" id="institution_network" placeholder="https://www.ornek.com" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Yenileme Garantisi</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="mygroup">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="2" name="mygroup">
+                            Yok
+                        </label>
+                        <label class="radio-inline w58">
+                            <div class="input-group">
+                                <input type="number" class="form-control input" disabled="disabled"  id="year">
+                                <span class="input-group-addon">Yıl</span>
+                            </div>
+
+                        </label>
+                        <input type="hidden" id="mygroupid" />
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Psikolojik Destek Hizmeti</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="hasPsychologicalSupport">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="0" name="hasPsychologicalSupport">
+                            Yok
+                        </label>
+                        <input type="hidden" id="hasPsychologicalSupport" />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Diyetisyen Hizmeti</label>
+                        <br />
+                        <label class="radio-inline">
+                            <input id="yes" type="radio" value="1" name="hasDieticianService">
+                            Var
+                        </label>
+                        <label class="radio-inline">
+                            <input id="no" type="radio" value="0" name="hasDieticianService">
+                            Yok
+                        </label>
+                        <input type="hidden" id="hasDieticianService" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Doğum Hizmeti</label>
+                                <div class="input-group">
+                                    <input type="number" min="1" max="50" step="1" id="numberOfBirthTerm" class="form-control">
+                                    <span class="input-group-addon">Kez</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label></label>
+                                <div class="checkbox checkbox-success IsBirthTermLimitlessDiv padding-left-10 margin-top-15">
+                                    <input type="checkbox" id="isBirthTermLimitless">
+                                    <label for="isBirthTermLimitless">Limitsiz</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+
+                <div class="col-md-12 p-d-0">
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Geçmiş Hastalıklar</label>
+                        <input type="text" id="past_diseases" placeholder="" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 p-d-0 hr"></div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="parameterAdd">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript" src="~/js/parameters/productterms/productterms.js"></script>
+
+}

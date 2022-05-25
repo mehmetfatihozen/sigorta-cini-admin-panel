@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Fatih\\Source\\Repos\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Fatih\\Source\\Repos\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fatih\\Source\\Repos\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel.csproj",
+        "projectName": "SigortaCini.UI.AdminPanel",
+        "projectPath": "C:\\Users\\Fatih\\Source\\Repos\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel.csproj",
+        "packagesPath": "C:\\Users\\Fatih\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fatih\\Source\\Repos\\SigortaCini.UI.AdminPanel\\SigortaCini.UI.AdminPanel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fatih\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/SigortaCiniAzureDevOps/_packaging/SigortaCini.Nuget/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.6.1, )"
+            },
+            "Microsoft.ApplicationInsights.SnapshotCollector": {
+              "target": "Package",
+              "version": "[1.3.4, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Caching.Redis": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "SigortaCini.Framework.Cryptology": {
+              "target": "Package",
+              "version": "[1.0.5, )"
+            },
+            "SigortaCini.Framework.Data": {
+              "target": "Package",
+              "version": "[4.3.980, )"
+            },
+            "SigortaCini.Framework.Extensions": {
+              "target": "Package",
+              "version": "[1.2.18, )"
+            },
+            "SigortaCini.Framework.IOC": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "SigortaCini.Framework.Mapping": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "SigortaCini.Framework.MessageQueue": {
+              "target": "Package",
+              "version": "[1.0.12, )"
+            },
+            "SigortaCini.Framework.NoSQL": {
+              "target": "Package",
+              "version": "[1.1.15, )"
+            },
+            "SigortaCini.Framework.Restful": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
+            "ismkdc.Azure.WebHostExtension": {
+              "target": "Package",
+              "version": "[0.0.4-alpha, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

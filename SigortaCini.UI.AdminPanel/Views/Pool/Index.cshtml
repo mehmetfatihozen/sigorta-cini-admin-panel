@@ -1,0 +1,275 @@
+﻿
+@{
+    ViewData["Title"] = "Havuz İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/metronic/assets/global/plugins/hummingbird/hummingbird-treeview.css" />
+}
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-6 col-sm-6 col-xs-6 text-left caption p-d-0">
+        Havuz İşlemleri
+    </div>
+   
+    <div class="col-md-6 col-sm-6 col-xs-6 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnOpenModal">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Yeni Ekle
+            </a>
+            <div class="btn-group">
+                <a class="btn btn-default btn-sm bg-black" style=" border-top-right-radius: 8px;  border-bottom-right-radius: 8px;" href="javascript:;" data-toggle="dropdown">
+                    <i class="fa fa-cogs  pink-color"></i> Araçlar <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                  
+                    <li>
+                        <a href="javascript:;" id="btnPoolTaskOperationModal">
+                            <i class="fa fa-plus-square pink-color"></i> Havuza Task İşlem Ekle
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<i class="fas fa-compress-arrows-alt"></i>
+<div id="tree_view_panel" class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="text-left margin-bottom-20 display-flex pad-10 font-weight-bold font-size-14">
+                <p id="ExpandAll" class="margin-right-20 cursor"><i class="fa fa-bars gray-color margin-right-5 "></i>Hepsini Aç</p>
+                <p id="CollapseAll" class="cursor"><i class="fa fa-list-alt gray-color margin-right-5 "></i>Hepsini Kapat</p>
+            </div>
+            <div id="treeview_container" class="hummingbird-treeview" style="overflow-y: scroll;height:550px;">
+                <ul id="treeview" class="hummingbird-base no-padding"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal content-->
+<div class="modal fade" id="poolOperationModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Havuz Ekle
+
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="hide PoolAdd">
+                    <div class="col-md-6">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Ana Havuz</label>
+                            <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="parent_pool">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Default Havuz Mu ?</label>
+                            <div class="checkbox checkbox-success IsSigortaCiniDiv padding-left-36 margin-bottom-m4">
+                                <input type="checkbox" id="IsSigortaCini">
+                                <label for="IsSigortaCini">Evet</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="hide PoolList">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Ana Havuz</label>
+                            <select class="form-control" data-placeholder="Select..." tabindex="-1" title="" id="parent_pool_list">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 pad-left-0 padding-right-0">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label"> Havuz Adı</label>
+                            <input type="text" class="form-control input" placeholder="Havuz Adı" id="poolName">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 pad-left-0 padding-right-0">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Havuz Açıklaması</label>
+                            <input type="text" class="form-control input" placeholder="Havuz Açıklaması" id="poolDescription">
+                        </div>
+                    </div>
+                </div>
+
+
+              
+
+
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <label class="control-label">Aktiflik Durumu</label>
+                        <div class="checkbox checkbox-success poolIsActiveDiv padding-left-23">
+                            <input type="checkbox" id="defaultUnchecked">
+                            <label for="defaultUnchecked">Aktif</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left  width-100 fnt-14 hide" id="btnPoolAdd">Ekle</button>
+                    <button type="button" class="btn btn-success pull-left  width-100 fnt-14 hide" id="btnPoolAddForList">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal content-->
+<div class="modal fade" id="poolOperationUpdateModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Havuz Güncelle
+
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Ana Tenant</label>
+                        <select class="form-control" tabindex="-1" id="parent_pool_update">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Havuz Adı</label>
+                        <input type="text" class="form-control input" placeholder="Havuz Adı" id="poolNameUpdate">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Default Havuz Mu ?</label>
+                        <div class="checkbox checkbox-success IsSigortaCiniUpdateDiv padding-left-36 margin-bottom-m4">
+                            <input type="checkbox" id="IsSigortaCiniUpdate">
+                            <label for="IsSigortaCiniUpdate">Evet</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Havuz Açıklaması</label>
+                        <input type="text" class="form-control input" placeholder="Havuz Açıklaması" id="poolDescriptionUpdate">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <label class="control-label">Aktiflik Durumu</label>
+                        <div class="checkbox checkbox-success poolIsActiveDivUpdate padding-left-23">
+                            <input type="checkbox" id="defaultUncheckedUpdate">
+                            <label for="defaultUncheckedUpdate">Aktif</label>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="poolId">
+
+            </div>
+                <div class="modal-footer">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-success pull-left  width-100 fnt-14" id="btnPoolUpdate">Güncelle</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="poolTaskOperationModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Task İşlem Tipi Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Task İşlem Tipi Seçiniz</label>
+                        <select class="form-control  col-md-12" data-placeholder="Select..." tabindex="-1" title="" id="ddlTaskUserDefinition">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <div class="form-group hide" id="pools">
+                            <input type="checkbox" id="selectAll">
+                            <label class="font-weight-bold font-size-14">Hepsini Seç</label>
+                            <div class="usersCheckBox" style="padding-left: 21px;overflow-y: scroll;height:252px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+               
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left  width-100 fnt-14" id="btnSave">Kaydet</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+  
+    <script src="~/js/pool/pool.js"></script>
+    <script type="text/javascript" src="~/metronic/assets/global/plugins/hummingbird/hummingbird-treeview.js"></script>
+
+ 
+}
+

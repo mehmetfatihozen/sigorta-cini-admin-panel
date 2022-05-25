@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Müşteri Detay Rapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Müşteri Detay Rapor
+    </div>
+
+</div>
+
+<br />
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+              
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                                <label>Ürün</label>
+                                <select class="form-control" data-placeholder="Seçiniz..." multiple id="products">
+                                </select>
+                                <br />
+                                <input type="checkbox" id="selectAllProducts">Hepsini Seç
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Lead Tipi</label>
+                                <select class="form-control" id="leads">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_lead_reports" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_lead_reports" class="form-control">
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-12 form-group margin-top-25">
+                                <button id="btnList" class="btn btn-success border-8-radius">Listele</button>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-12 form-group margin-top-25">
+                                <button id="btn_clear" class="btn btn-warning border-8-radius">Temizle</button>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+                        <table class="table table-striped table-bordered table-hover" id="leadReportsTable">
+                            <thead>
+                                <tr class="table_thead_back">
+                                    <th class="no-cursor">
+                                        Lead ID
+                                    </th>
+                                    <th class="no-cursor">
+                                        Data Tip
+                                    </th>
+                                    <th class="no-cursor">
+                                        Kaynak
+                                    </th>
+                                    <th class="no-cursor">
+                                        Atanan Kullanıcı
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ürün
+                                    </th>
+                                    <th class="no-cursor">
+                                        Müşteri Ad Soyad
+                                    </th>
+                                    <th class="no-cursor">
+                                        Telefon
+                                    </th>
+                                    <th class="no-cursor">
+                                        Ekleme Tarihi
+                                    </th>
+                                    <th class="no-cursor">
+                                        İlk Arama Tarihi
+                                    </th>
+                                    <th class="no-cursor">
+                                        İşlem Tarihi
+                                    </th>
+                                    <th class="no-cursor">
+                                        Sonuç Kodu
+                                    </th>
+                                    <th class="no-cursor">
+                                        Sonuç Kodu Alt Kırılım
+                                    </th>
+                                    <th class="no-cursor">
+                                        Randevu Not
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/leadreports/leadreports.js"></script>
+}

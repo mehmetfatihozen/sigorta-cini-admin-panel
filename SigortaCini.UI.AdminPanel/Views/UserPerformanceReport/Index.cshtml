@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Çalışan Performans Raporu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Çalışan Performans Raporu
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                    <label class="col-xs-12 pad-left-0">Tarih&nbsp;<i class="fa fa-calendar"></i></label>
+                    <input id="dateRangeList" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group margin-top-25 text-center">
+                    <button id="btnList" class="btn btn-success border-8-radius">Listele</button>
+                    <button id="btnClear" class="btn btn-warning border-8-radius">Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table style="width:100%" class="table table-striped table-bordered table-hover" id="userPerformanceReportTable">
+                <thead>
+                    <tr class="table_thead_back">
+                        <th class="no-cursor">Call Center Çalışanı</th>
+                        <th class="no-cursor">Kaynak</th>
+                        <th class="no-cursor">Toplam Lead</th>
+                        <th class="no-cursor">Satış Adedi</th>
+                        <th class="no-cursor">Randevu Adedi</th>
+                        <th class="no-cursor">Dönüşüm Oranı</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/userperformancereport/userperformancereport.js"></script>
+    <script src="~/daterangepicker/js/moment.min.js"></script>
+    <script src="~/daterangepicker/js/datetime-moment.js"></script>
+    <script src="~/daterangepicker/js/daterangepicker.js"></script>
+    <link href="~/daterangepicker/css/daterangepicker.css" rel="stylesheet" />
+}

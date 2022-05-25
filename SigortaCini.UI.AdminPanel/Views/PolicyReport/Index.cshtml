@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewData["Title"] = "Poliçe Raporu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Poliçe Raporu
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active border-1-black"><a data-toggle="pill" href="#policyReportList" id="policyReportListTab">Poliçe Listesi</a></li>
+        <li class="border-1-black"><a data-toggle="pill" href="#policyReportChart" id="policyReportChartTab">Poliçe Grafiği</a></li>
+    </ul>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="portlet box">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label>Kaynak</label>
+                    <select class="form-control" data-placeholder="Seçiniz..." multiple id="tenants"></select>
+                    <br />
+                    <input type="checkbox" id="selectAllTenants">Hepsini Seç
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label>Sigorta Şirketi</label>
+                    <select class="form-control" data-placeholder="Seçiniz..." multiple id="companies"></select>
+                    <br />
+                    <input type="checkbox" id="selectAllCompanies">Hepsini Seç
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label>Ürün</label>
+                    <select class="form-control" data-placeholder="Seçiniz..." multiple id="products"></select>
+                    <br />
+                    <input type="checkbox" id="selectAllProducts">Hepsini Seç
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label>Görev Temsilcisi</label>
+                    <select class="form-control" data-placeholder="Seçiniz..." multiple id="assignedUsers"></select>
+                    <br />
+                    <input type="checkbox" id="selectAllAssignedUsers">Hepsini Seç
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <label class="row col-xs-12">Poliçe Tarihi&nbsp;<i class="fa fa-calendar"></i></label>
+                    <input id="policyDateRange" class="col-xs-12 form-control daterangepicker-style" autocomplete="off">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group margin-top-25 text-center">
+                    <button id="btnList" class="btn btn-success border-8-radius">Listele</button>
+                    <button id="btnClear" class="btn btn-warning border-8-radius">Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div id="policyReportList" class="tab-pane fade in active">
+                    <table class="table table-striped table-bordered table-hover" id="policyReportTable" style="width:100%">
+                        <thead>
+                            <tr class="table_thead_back">
+                                <th class="no-cursor">
+                                    Kaynak
+                                </th>
+                                <th class="no-cursor">
+                                    Sigorta Şirketi
+                                </th>
+                                <th class="no-cursor">
+                                    Ürün
+                                </th>
+                                <th class="no-cursor">
+                                    Ad Soyad
+                                </th>
+                                <th class="no-cursor">
+                                    Görev Temsilcisi
+                                </th>
+                                <th class="no-cursor">
+                                    Poliçeleştirme Tarihi
+                                </th>
+                                <th class="no-cursor">
+                                    E-mail
+                                </th>
+                                <th class="no-cursor">
+                                    Telefon
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="policyReportChart" style="width:100%;height:auto" class="tab-pane fade">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/metronic/assets/global/plugins/googleChart.js"></script>
+    <script type="text/javascript" src="~/js/policyReport/policyReport.js"></script>
+    <script src="~/daterangepicker/js/moment.min.js"></script>
+    <script src="~/daterangepicker/js/datetime-moment.js"></script>
+    <script src="~/daterangepicker/js/daterangepicker.js"></script>
+    <link href="~/daterangepicker/css/daterangepicker.css" rel="stylesheet" />
+}

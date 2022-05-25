@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Yetki İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Yetki İşlemleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black hide" id="save_permission">
+                <i class="fa fa-save pink-color"></i>
+                Kaydet
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Yetki Seçiniz</label>
+                    <select class="form-control ddl" data-placeholder="Seçiniz..." tabindex="-1" title="" id="users">
+                        <option>Seçiniz</option>
+                    </select>
+                    <input type="hidden" id="selectedId" />
+                </div>
+                <div class="form-group hide" id="alt_content">
+                    <label for="selectUsersMultiple">Kişileri Seçiniz</label>
+                    <div class="usersCheckBox" style="padding-left: 25px;overflow-y: scroll;height:230px">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+
+    <script type="text/javascript" src="~/js/permission/permission.js"></script>
+
+}

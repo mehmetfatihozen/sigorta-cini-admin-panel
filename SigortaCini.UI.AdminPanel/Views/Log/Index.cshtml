@@ -1,0 +1,377 @@
+﻿
+@{
+    ViewData["Title"] = "Log İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/metronic/assets/global/plugins/jsonViewer/jjsonviewer.css" />
+    <link rel="stylesheet" type="text/css" href="~/metronic/assets/global/plugins/xmlViewer/css/simpleXML.css" />
+
+}
+<div class="col-md-12 col-sm-12 col-xs-12  top_band">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-left caption p-d-0">
+        Log İşlemleri
+    </div>
+
+</div>
+<br />
+<div class="col-md-12 col-sm-12 col-xs-12">
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="active border-1-black"><a data-toggle="pill" href="#b2b">B2B</a></li>
+        <li class="border-1-black"><a data-toggle="pill" id="changeTabB2C" href="#b2c">B2C</a></li>
+        <li class="border-1-black"><a data-toggle="pill" id="changeTabMQ" href="#mq">MQ</a></li>
+    </ul>
+
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 ">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div id="b2b" class="tab-pane fade in active">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                <label>Anahtar</label>
+                                <input class="form-control" id="typeIdB2b" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_b2b" class="form-control">
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_b2b" class="form-control">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                <label>Kullanıcı</label>
+                                <select class="form-control" id="userlistb2b">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnListb2b" class="btn btn-default btn-sm bg-black">Listele</button>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnClearb2b" class="btn btn-default btn-sm bg-red border-8-radius">Temizle</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover" id="logTableB2b">
+                        <thead>
+                            <tr class="table_thead_back">
+
+                                <th class="no-cursor">
+                                    Ortam
+                                </th>
+                                <th class="no-cursor">
+                                    IP
+                                </th>
+                                <th class="no-cursor">
+                                    Hata
+                                </th>
+                                <th class="no-cursor">
+                                    Zaman
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+
+
+                </div>
+                <div id="b2c" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                <label>Anahtar</label>
+                                <input class="form-control" id="typeIdB2c" />
+
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_b2c" class="form-control">
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_b2c" class="form-control">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                <label>Kullanıcı</label>
+                                <select class="form-control" id="userlistb2c">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnListB2c" class="btn btn-default btn-sm bg-black ">Listele</button>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnClearb2c" class="btn btn-default btn-sm bg-red  border-8-radius">Temizle</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover" id="logTableB2c">
+                        <thead>
+                            <tr class="table_thead_back">
+
+                                <th class="no-cursor">
+                                    Ortam
+                                </th>
+                                <th class="no-cursor">
+                                    Tip
+                                </th>
+                                <th class="no-cursor">
+                                    Metot
+                                </th>
+                                <th class="no-cursor">
+                                    Hata
+                                </th>
+                                <th class="no-cursor">
+                                    Zaman
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div id="mq" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                                <label>Anahtar</label>
+                                <input class="form-control" id="keyformq" />
+
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <input type="text" id="start_date_mq" class="form-control">
+                            </div>
+
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                                <label>Bitiş Tarihi</label>
+                                <input type="text" id="end_date_mq" class="form-control">
+                            </div>
+
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnListMq" class="btn btn-default btn-sm bg-black">Listele</button>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-6 form-group margin-top-25">
+                                <button id="btnClearMq" class="btn btn-default btn-sm bg-red border-8-radius">Temizle</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover" id="logTableMq">
+                        <thead>
+                            <tr class="table_thead_back">
+                                <th class="no-cursor">
+                                    Sigorta Şirketi
+                                </th>
+                                <th class="no-cursor">
+                                    Ürün Tip
+                                </th>
+                                <th class="no-cursor">
+                                    Metot
+                                </th>
+                                <th class="no-cursor">
+                                    Zaman
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resultDetailsB2b" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">Log Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Ortam</label>
+                        <input type="text" class="form-control input" disabled id="enviroment" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Metot Tipi</label>
+                        <input type="text" class="form-control input" disabled id="methodType">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Tip</label>
+                        <input type="text" class="form-control input" disabled id="typeName">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">IP Adresi</label>
+                        <input type="text" class="form-control input" disabled id="ipAddress">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Kullanıcı</label>
+                        <input type="text" class="form-control input" disabled id="userId">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Zaman</label>
+                        <input type="text" class="form-control input" disabled id="createDate">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <div id="jjson" class="jjson"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="resultDetailsmq" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon myclose" data-dismiss="modal"></i>
+                <h4 class="modal-title">Log Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Ortam</label>
+                        <textarea rows="10" class="form-control no-resize" disabled="disabled" id="message"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="xml_content hide">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div id="xmlinput"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div id="xmloutput"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="json_content hide">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div id="jjsonmqinput" class="jjson"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div id="jjsonmqoutput" class="jjson"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14 myclosemq" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resultDetailsB2c" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content ">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">Log Detay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Ortam</label>
+                        <input type="text" class="form-control input" disabled id="enviromentb2c" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Metot Tipi</label>
+                        <input type="text" class="form-control input" disabled id="methodTypeb2c">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tip</label>
+                        <input type="text" class="form-control input" disabled id="typeNameb2c">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Tenant Token</label>
+                        <input type="text" class="form-control input" disabled id="tenant_token">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Session Id</label>
+                        <input type="text" class="form-control input" disabled id="sessionId">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Zaman</label>
+                        <input type="text" class="form-control input" disabled id="createDateb2c">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea rows="10" class="form-control no-resize" disabled="disabled" id="errMessage"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div id="jjsonforrequest" class="jjson"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div id="jjsonforresponse" class="jjson"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/metronic/assets/global/plugins/jsonViewer/jjsonviewer.js"></script>
+    <script type="text/javascript" src="~/metronic/assets/global/plugins/xmlViewer/js/simpleXML.js"></script>
+    <script src="~/js/log/log.js"></script>
+}

@@ -1,0 +1,267 @@
+﻿
+@{
+    ViewData["Title"] = "Çalışan İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left caption p-d-0">
+        Çalışan İşlemleri
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-8 text-right p-d-0">
+        <div class="actions">
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnWorkerAdd">
+                <i class="fa fa-rocket pink-color"></i>
+                Çalışan Ekle - Çıkar
+            </a>
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnCodeAdd">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Çalışana Kampanya Ekle - Çıkar
+            </a>
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="btnpr">
+                <i class="fa fa-chain pink-color"></i>
+                Organizasyon Seç
+            </a>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="codeModala" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Organizasyon
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Organizasyon</label>
+                        <select class="form-control" data-placeholder="Seçiniz..." tabindex="-1" id="organ">
+                            <option value="">Seçiniz</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <input type="hidden" id="codeId" />
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" disabled="disabled" id="btnAddCode">Getir</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="codeTable">
+                <thead>
+                    <tr class="table_thead_back">
+
+                        
+                        <th class="no-cursor">
+                            Çalışan Adı
+                        </th>
+
+                        <th class="no-cursor">
+                            Çalışan Soyadı
+                        </th>
+
+                        <th class="no-cursor">
+                            Çalışan Telefonu
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal content-->
+<div class="modal fade" id="workerAdd" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Çalışan Ekle - Çıkar
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12" id="alt_content_to">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Kişileri Seçiniz</label>
+                        <div class="usersAllCheckBox" style="padding-left: 25px;overflow-y: scroll;height:300px">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="hide new_person">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Ad</label>
+                            <input type="text" class="form-control input" placeholder="Ad" id="name_new">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Soyad</label>
+                            <input type="text" class="form-control input" placeholder="Soyad" id="surname_new">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Telefon</label>
+                            <input type="text" class="form-control input" placeholder="__-__-____" id="tel_new">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnAddWorker">Ekle</button>
+                </div>
+                <div class="col-md-4 hide" id="btnAddNewDiv">
+                    <button type="button" class="btn btn-success  pull-right width-100 fnt-14" id="btnAddNew">Ekle</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-dark pull-left width-100 fnt-14" id="btnOtherAdd">Olmayan Kişi Ekle</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal content-->
+<div class="modal fade" id="workerUpdate" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Çalışan Güncelle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Ad</label>
+                        <input type="text" class="form-control input" placeholder="Ad" id="name_update">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Soyad</label>
+                        <input type="text" class="form-control input" placeholder="Soyad" id="surname_update">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Telefon</label>
+                        <input type="text" class="form-control input" placeholder="__-__-____" id="tel_update">
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" id="personId" />
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnUpdate">Güncelle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="codeModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Çalışana Kampanya Kodu Ekle - Çıkar
+                </h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Kod seçiniz</label>
+                        <select class="form-control ddl" data-placeholder="Seçiniz..." tabindex="-1" title="" id="codesfor">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12 hide" id="alt_content">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Kişileri Seçiniz</label>
+                        <div class="usersCheckBox" style="padding-left: 25px;overflow-y: scroll;height:285px">
+
+                        </div>
+                    </div>
+                </div>
+               
+
+                <input type="hidden" id="campaigncode" />
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" disabled="disabled" id="btnAddCodes">Kaydet</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section scripts {
+  
+
+   
+    <script type="text/javascript" src="~/js/workers/workers.js"></script>
+
+}

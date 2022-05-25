@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewData["Title"] = "Parametreler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+  
+    <link rel="stylesheet" type="text/css" href="~/css/temp.css" />
+
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12 row top_band">
+    <div class="col-md-6 col-sm-6 col-xs-6 text-left caption p-d-0">
+        Parametre İşlemleri
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6 text-right p-d-0">
+        <div class="actions">
+
+            <a href="javascript:;" class="btn btn-default btn-sm bg-black" id="new_parameter">
+                <i class="fa fa-plus-circle pink-color"></i>
+                Yeni Parametre Ekle
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 row">
+    <div class="portlet box yellow">
+        <div class="portlet-body">
+            <div sty class="form-body">
+                <div class="form-group">
+                    <label>Parametre Tipi Seçiniz</label>
+                    <select class="form-control" id="parameters">
+                        <option value="">Seçiniz</option>
+                        <option value="build"> Bina Yapım Tarzı </option>
+                        <option value="year"> İnşa Yılı </option>
+                        <option value="floor"> Toplam Kat Sayısı </option>
+                        <option value="type"> Kullanım Şekli </option>
+                        <option value="bank"> Banka </option>
+                        <option value="institution"> Kurum </option>
+                        <option value="finance"> Finans Kuruluşu </option>
+                        <option value="insurance"> Sigorta Ettiren </option>
+                        <option value="branch">Şube </option>
+
+
+
+
+                    </select>
+                    <input type="hidden" id="selectedId" />
+                </div>
+                <div class="form-group hide" id="alt_content">
+                    <label for="selectUsersMultiple">Parametre Seçiniz</label>
+                    <div class="col-md-12 col-sm-12 col-xs-12  no-margin no-padding">
+                        <div class="col-md-12 col-sm-12 col-xs-12  no-margin no-padding">
+                            <select class="form-control ddl" data-placeholder="Seçiniz..." tabindex="-1" title="" id="parameter_type">
+                                <option>Seçiniz</option>
+                            </select>
+                            <input type="hidden" id="pId" />
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12  no-margin no-padding margin-top-15">
+                            <div class="col-md-3">
+                                <div class="form-group modal-form">
+                                    <div class="col-md-2 modal-label">
+                                        Adı
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control input" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group modal-form">
+                                    <div class="col-md-2 modal-label">
+                                        Açıklaması
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control input" id="desc">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group modal-form">
+                                    <div class="col-md-2 modal-label">
+                                        Durumu
+                                    </div>
+                                    <div class="col-md-10  checkbox checkbox-success IsActiveDiv padding-left-60">
+                                        <input type="checkbox" id="IsActive">
+                                        <label for="IsActive"></label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-right no-margin no-padding">
+                            <button class="btn btn-sm bg-black" id="btn_save">
+                                <i class="fa fa-save pink-color"></i>
+                                Kaydet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModalParameter" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-times modal-close-icon" data-dismiss="modal"></i>
+                <h4 class="modal-title">
+                    Parametre Ekle
+                </h4>
+            </div>
+            <div class="modal-body">
+
+
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Parametre Tipi</label>
+                        <select class="form-control" id="parametersAdd">
+                            <option value="">Seçiniz</option>
+                            <option value="build"> Bina Yapım Tarzı </option>
+                            <option value="year"> İnşa Yılı </option>
+                            <option value="floor"> Toplam Kat Sayısı </option>
+                            <option value="type"> Kullanım Şekli </option>
+                            <option value="bank"> Banka </option>
+                            <option value="institution"> Kurum </option>
+                            <option value="finance"> Finans Kuruluşu </option>
+                            <option value="insurance"> Sigorta Ettiren </option>
+                            <option value="branch"> Şube </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Parametre Adı</label>
+                        <input type="text" class="form-control input" placeholder="Parametre Adı" id="ParaName">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Parametre Açıklaması</label>
+                        <input type="text" class="form-control input" placeholder="Parametre Açıklaması" id="ParaDesc">
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Parametre Aktifliği</label>
+                        <div class="checkbox checkbox-success ParaIsActiveDiv padding-left-36">
+                            <input type="checkbox" id="ParaIsActive">
+                            <label for="ParaIsActive">Evet</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success pull-left width-100 fnt-14" id="btnAddPara">Ekle</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger pull-right width-100 fnt-14" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+            <input type="hidden" id="RoleId">
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section scripts {
+  
+    <script type="text/javascript" src="~/js/parameters/insuranceparameters/insuranceparameters.js"></script>
+
+}
